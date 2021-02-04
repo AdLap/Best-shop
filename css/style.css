@@ -18,6 +18,11 @@
     --open-sans-regular: 400;
     --open-sans-bold: 700;
 }
+
+* {
+    box-sizing: border-box;
+}
+
 .container {
     margin: 0 auto;
     width: 1352px;
