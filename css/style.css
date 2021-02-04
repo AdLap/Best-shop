@@ -1,0 +1,24 @@
+:root {
+    --color-primary: rgba(8, 166, 228, 1);
+    --color-primary-shadow: rgba(7, 172, 230, 0.16);
+    --color-redish: rgba(251, 59, 100, 1);
+    --color-green: rgba(85, 223, 180, 1);
+    --color-black: rgba(0, 0, 0, 1);
+    --color-grey: rgba(165, 165, 165, 1);
+    --color-light-grey: rgba(247, 247, 247, 1);
+    --color-white: rgba(255, 255, 255, 1);
+    --color-light-shadow: rgba(0, 0, 0, 0.16);
+    --raleway: "Raleway", sans-serif;
+    --raleway-light: 300;
+    --raleway-regular: 400;
+    --raleway-bold: 700;
+    --raleway-extra-bold: 800;
+    --open-sans: "Open Sans", sans-serif;
+    --open-sans-light: 300;
+    --open-sans-regular: 400;
+    --open-sans-bold: 700;
+}
+.container {
+    margin: 0 auto;
+    width: 1352px;
+}
