@@ -27,6 +27,9 @@ a {
     width: 1352px;
     /*position: relative;*/
 }
+.main-content {
+    width: 100vw;
+}
 .title {
     font-family: var(--raleway);
     font-size: 36px;
@@ -60,7 +63,7 @@ a {
     font-family: var(--raleway);
     font-weight: var(--light);
     font-size: 32px;
-    line-height: 1.15em;
+    line-height: 37px/*1.15em*/;
     color: var(--color-primary);
     text-align: left;
 }
@@ -72,8 +75,8 @@ a {
     font-family: var(--open-sans);
     font-weight: var(--bold);
     font-size: 11px;
-    letter-spacing: .3em;
-    line-height: 1.4em;
+    letter-spacing: 3.3px/*.3em*/;
+    line-height: 15px/*1.4em*/;
     text-align: center;
     color: var(--color-grey);
     cursor: pointer;
@@ -135,3 +138,58 @@ a {
     width: 100%;
 }
                                                     /* SECTION STATISTIC */
+.section-statistic-box {
+    background-color: var(--color-white);
+    /*box-shadow: 0 -5px 80px var(--color-light-shadow);*/
+}
+.statistic-column-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+.statistic-title {
+    margin-top: 31.75rem/*508px*/;
+    text-align: center;
+    padding-top: 6.25rem/*100px*/;
+}
+.statistic-txt-box {
+    border: 1px solid red;
+    margin: 6.3rem/*101px*/;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.statistic-img-box {
+    border: 1px dotted green;
+    position: relative;
+}
+.statistic-txt-img::before {
+    content: "";
+    width: 63px;
+    height: 63px;
+    background-color: var(--color-redish);
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+
+}
+.statistic-txt-number {
+    margin-top: .87rem/*14px*/;
+    font-family: var(--raleway);
+    font-size: 20px;
+    font-weight: var(--extra-bold);
+    text-align: center;
+    line-height: 24px;
+    letter-spacing: .3em;
+    color: var(--color-black);
+}
+.statistic-txt-txt {
+    margin-top: 1.2rem/*19px*/;
+    font-family: var(--raleway);
+    font-size: 17px;
+    font-weight: var(--regular);
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: var(--color-grey);
+}
+
