@@ -29,4 +29,5 @@
                                                 /*HEADER*/
 .header-bg {
     background-color: var(--color-white);
+    height: 70px;
 }
