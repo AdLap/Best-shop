@@ -42,7 +42,7 @@ a {
     padding: 1rem 0;
     max-height: 70px;
 }
-.header-logo    {
+.header-logo {
     font-family: var(--raleway);
     font-weight: var(--light);
     font-size: 32px;
