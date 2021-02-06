@@ -140,7 +140,7 @@ a {
                                                     /* SECTION STATISTIC */
 .section-statistic-box {
     background-color: var(--color-white);
-    /*box-shadow: 0 -5px 80px var(--color-light-shadow);*/
+    box-shadow: 0 -5px 80px var(--color-light-shadow);
 }
 .statistic-column-box {
     display: flex;
@@ -152,25 +152,53 @@ a {
     padding-top: 6.25rem/*100px*/;
 }
 .statistic-txt-box {
-    border: 1px solid red;
-    margin: 6.3rem/*101px*/;
+    margin-top: 6.3rem/*101px*/;
+    margin-bottom: 7.5rem/*px*/;
+    height: 167px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .statistic-img-box {
-    border: 1px dotted green;
     position: relative;
+    width: 100%;
+    height: 63px;
 }
-.statistic-txt-img::before {
+.statistic-img-box-first::before,
+.statistic-img-box-second::before,
+.statistic-img-box-last::before {
     content: "";
     width: 63px;
     height: 63px;
-    background-color: var(--color-redish);
     position: absolute;
+    top: 0;
+    left: calc(50% - 31.5px);
     border-radius: 50%;
     border: none;
-
+}
+.statistic-img-box-first::before {
+    background-color: var(--color-redish);
+}
+.statistic-img-box-second::before {
+    background-color: var(--color-primary);
+}
+.statistic-img-box-last::before {
+    background-color: var(--color-green);
+}
+.statistic-txt-img {
+     position: absolute;
+}
+.statistic-txt-img-first {
+    top: 0;
+    right: 17px;
+}
+.statistic-txt-img-second {
+    top: calc(50% - 18px);
+    right: 15px;
+}
+.statistic-txt-img-last {
+    top: 5px;
+    right: 0;
 }
 .statistic-txt-number {
     margin-top: .87rem/*14px*/;
@@ -192,4 +220,28 @@ a {
     letter-spacing: 0;
     color: var(--color-grey);
 }
-
+                                                        /* SECTION BENEFITS */
+.section-benefits-box {
+    background-color: var(--color-light-grey);
+}
+.benefits-container {
+    width: 1124px;
+    margin: 0 auto;
+}
+.benefits-content-box {
+    background-color: var(--color-white);
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+.benefit-box-tree {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+}
+.benefits-txt-box-tree {
+    background-color: var(--color-white);
+}
+.benefits-img-box-tree {
+    background-color: var(--color-green);
+}
