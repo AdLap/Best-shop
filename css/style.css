@@ -132,10 +132,12 @@ a {
 }
 .open-img-box {
     position: relative;
-    width: 100%;
+    width: 100vw;
+    height: 594px;
 }
 .open-img {
     position: absolute;
+    bottom: 0;
     width: 100%;
 }
                                                     /* SECTION STATISTIC */
@@ -148,7 +150,6 @@ a {
     justify-content: space-evenly;
 }
 .statistic-title {
-    margin-top: 31.75rem/*508px*/;
     text-align: center;
     padding-top: 6.25rem/*100px*/;
 }
@@ -356,3 +357,4 @@ a {
     height: 100%;
     position: absolute;
 }
+                                                        /* SECTION PRICING */
