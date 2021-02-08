@@ -3,6 +3,7 @@
     --color-primary-shadow: rgba(7, 172, 230, 0.16);
     --color-redish: rgba(251, 59, 100, 1);
     --color-green: rgba(85, 223, 180, 1);
+    --color-blue: rgba(7, 172, 230, 1);
     --color-black: rgba(0, 0, 0, 1);
     --color-grey: rgba(165, 165, 165, 1);
     --color-light-grey: rgba(247, 247, 247, 1);
@@ -323,6 +324,7 @@ a {
     justify-content: space-between;
     background-color: transparent;
     border: none;
+    margin-bottom: 0;
 }
 .benefits-content-box-last {
     width: 623px;
@@ -358,3 +360,128 @@ a {
     position: absolute;
 }
                                                         /* SECTION PRICING */
+.pricing-container {
+    width: 1266px;
+    margin: 100px auto 155px auto;
+}
+.pricing-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.pricing-column-box {
+    display: flex;
+    justify-content: space-between;
+    gap: 59px;
+}
+.pricing-content-box {
+    width: 372px;
+    border-radius: 18px;
+    position: relative;
+}
+.pricing-content-box-first {
+    border: 1px solid var(--color-redish);
+}
+.pricing-content-box-second {
+    border: 1px solid var(--color-primary);
+}
+.pricing-content-box-last {
+    border: 1px solid var(--color-green);
+}
+/*.pricing-content-box:nth-child(2) {
+    flex-grow: 1;
+}*/
+.pricing-content-box * {
+    text-align: center;
+}
+.pricing-content-title {
+    font-family: var(--raleway);
+    font-weight: var(--bold);
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--color-black);
+    margin: 34px auto 14px auto;
+}
+.pricing-price {
+    font-family: var(--open-sans);
+    font-weight: var(--light);
+    font-size: 46px;
+    line-height: 64px;
+}
+.pricing-price-first {
+    color: var(--color-redish);
+}
+.pricing-price-second {
+    color: var(--color-primary);
+    position: relative;
+}
+.pricing-price-last {
+    color: var(--color-green);
+    position: relative;
+}
+.pricing-price-second::after,
+.pricing-price-last::after {
+    content: "Limited offer";
+    font-family: var(--raleway);
+    font-weight: var(--bold);
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--color-black);
+    position: absolute;
+    bottom: -19px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.pricing-list {
+    margin: 69px auto 55px auto;
+}
+.pricing-list-txt {
+    font-family: var(--open-sans);
+    font-weight: var(--regular);
+    font-size: 14px;
+    line-height: 41px;
+    color: var(--color-black);
+    position: relative;
+}
+.pricing-list-txt::before {
+    content: "";
+    display: inline-block;
+    background-image: url("../assets/Checkmark-1.svg");
+    background-size: cover;
+    border: 1px solid var(--color-green);
+    border-radius: 2px;
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    top: 11px;
+    transform: translate(-22px);
+}
+.pricing-btn {
+    display: inline-block;
+    padding: 16px 57px;
+    border-radius: 23px;
+    font-family: var(--open-sans);
+    font-weight: var(--bold);
+    font-size: 13px;
+    line-height: 18px;
+    text-transform: none;
+    color: var(--color-white);
+    position: absolute;
+    bottom: -25px;
+    left: calc(50% - 75px);
+}
+.pricing-btn-first {
+    background-color: var(--color-redish);
+}
+.pricing-btn-second {
+    background-color: var(--color-blue);
+}
+.pricing-btn-last {
+    background-color: var(--color-green);
+}
+.pricing-content-box-second {
+    transform: scale(1.1, 1.1);
+    box-shadow: 5px 10px 27px var(--color-primary-shadow);
+}
+.pricing-btn-second {
+    box-shadow: 5px 10px 14px var(--color-primary-shadow);
+}
