@@ -485,3 +485,29 @@ a {
 .pricing-btn-second {
     box-shadow: 5px 10px 14px var(--color-primary-shadow);
 }
+.section-contact-box {
+    border: 1px solid red;
+}
+.contact-box-container {
+    width: 896px;
+    margin: 0 auto;
+    display: flex;
+}
+.contact-column-left {
+    display: flex;
+    flex-direction: column;
+}
+.contact-column-right {
+    display: flex;
+    flex-direction: column;
+}
+.contact-form-box {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contact-btn {
+    display: inline-block;
+    padding: 20px 97px;
+}
