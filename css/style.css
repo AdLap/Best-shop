@@ -574,7 +574,7 @@ a {
     background-color: transparent;
     background-image: url(../assets/Checkmark.svg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 12px 11px;
     background-position: center;
 }
 .contact-btn {
