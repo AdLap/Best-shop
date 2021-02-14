@@ -132,7 +132,7 @@ a {
     cursor: pointer;
 }
 .open-btn:hover {
-    box-shadow: 0 0 14px var(--color-redish);
+    box-shadow: 0 0 14px var(--color-primary);
 }
 .open-img-box {
     position: relative;
@@ -446,30 +446,24 @@ a {
     position: relative;
 }
 .pricing-list-txt::before {
-    content: url(../assets/Checkmark-1.svg);
+    content: url(../assets/Ckechmark-1.svg);
     display: inline-block;
-    /*background-image: url("../assets/Checkmark-1.svg");
-    background-size: cover;*/
-    border: 1px solid var(--color-green);
-    border-radius: 2px;
     width: 11px;
     height: 11px;
     position: absolute;
-    top: 11px;
-    transform: translate(-22px);
+    top: 0;
+    transform: translate(-21px);
 }
 .pricing-list-first li:nth-last-child(2)::before,
 .pricing-list-first li:last-child::before {
     content: url(../assets/Close.svg);
     display: inline-block;
     background-size: cover;
-    border: 1px solid var(--color-green);
-    border-radius: 2px;
     width: 11px;
     height: 11px;
     position: absolute;
-    top: 11px;
-    transform: translate(-22px);
+    top: 0;
+    transform: translate(-21px);
 }
 .pricing-list-second li:last-child::before {
     content: url(../assets/Close.svg);
@@ -491,11 +485,20 @@ a {
 .pricing-btn-first {
     background-color: var(--color-redish);
 }
+.pricing-btn-first:hover {
+    box-shadow: 0 0 14px var(--color-redish);
+}
 .pricing-btn-second {
     background-color: var(--color-blue);
 }
+.pricing-btn-second:hover {
+    box-shadow: 0 0 14px var(--color-blue);
+}
 .pricing-btn-last {
     background-color: var(--color-green);
+}
+.pricing-btn-last:hover {
+    box-shadow: 0 0 14px var(--color-green);
 }
 .pricing-content-box-second {
     transform: scale(1.1, 1.1);
@@ -589,6 +592,9 @@ a {
     position: absolute;
     left: 0;
 }
+.contact-checkbox-input + span:hover::before {
+    box-shadow: 0 0 14px var(--color-contact-input-border);
+}
 .contact-checkbox-input:checked + span::before {
     background-color: transparent;
     background-image: url(../assets/Checkmark.svg);
@@ -605,6 +611,9 @@ a {
     border: none;
     border-radius: 35px;
     box-shadow: 5px 10px 14px var(--color-primary-shadow);
+}
+.contact-btn:hover {
+    box-shadow: 0 0 14px var(--color-primary);
 }
 .contact-btn a {
     color: var(--color-white);
@@ -652,4 +661,8 @@ a {
 .footer-link-box img {
     width: 24px;
     height: 24px;
+}
+.footer-twitter-link:hover,
+.footer-fb-link:hover {
+    transform: scale(1.2);
 }
