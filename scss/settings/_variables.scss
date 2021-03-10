@@ -1,5 +1,4 @@
 :root {
-  --color-primary: rgba(8, 166, 228, 1);
   --color-primary-shadow: rgba(7, 172, 230, 0.16);
   --color-redish: rgba(251, 59, 100, 1);
   --color-green: rgba(85, 223, 180, 1);
@@ -7,14 +6,42 @@
   --color-black: rgba(0, 0, 0, 1);
   --color-grey: rgba(165, 165, 165, 1);
   --color-light-grey: rgba(247, 247, 247, 1);
-  --color-white: rgba(255, 255, 255, 1);
-  --color-light-shadow: rgba(0, 0, 0, 0.16);
   --color-benefits-border-box: rgba(232, 233, 237, 1);
   --color-contact-input-border: rgba(149, 152, 154, 1);
-  --raleway: "Raleway", sans-serif;
-  --open-sans: "Open Sans", sans-serif;
-  --light: 300;
-  --regular: 400;
-  --bold: 700;
-  --extra-bold: 800;
+  //--raleway: "Raleway", sans-serif;
+  //--open-sans: "Open Sans", sans-serif;
+}
+
+//color
+$color-primary: rgba(8, 166, 228, 1);
+$color-white: rgba(255, 255, 255, 1);
+$color-light-shadow: rgba(0, 0, 0, 0.16);
+
+//font weight
+$light: 300;
+$regular: 400;
+$bold: 700;
+$extra-bold: 800;
+
+@mixin title-font($size, $weight) {
+  font-family: 'Raleway', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $size * 1.16;
+  color: rgba(0,0,0,1);
+}
+
+@mixin text-font($size, $weight) {
+  font-family: 'Open Sans', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $size * 1.35;
+  color: rgba(0,0,0,1);
+}
+
+%logo {
+  font-family: 'Raleway', sans-serif;
+  font-weight: $light;
+  color: $color-primary;
+  text-align: left;
 }
