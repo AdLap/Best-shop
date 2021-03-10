@@ -1,0 +1,37 @@
+.header-bg {
+    width: 100vw;
+    background-color: var(--color-white);
+    max-height: 70px;
+    box-shadow: 0 3px 6px var(--color-light-shadow);
+}
+.header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .25rem solid transparent;
+    padding: 1rem 0;
+    max-height: 70px;
+}
+.header-logo {
+    font-size: 32px;
+    line-height: 37px/*1.15em*/;
+}
+.header-menu {
+    display: flex;
+    gap: 6rem;
+}
+.header-menu-txt {
+    font-family: var(--open-sans);
+    font-weight: var(--bold);
+    font-size: 11px;
+    letter-spacing: 3.3px/*.3em*/;
+    line-height: 15px/*1.4em*/;
+    text-align: center;
+    color: var(--color-grey);
+    cursor: pointer;
+    padding: 1.7rem 0;
+}
+.header-menu-txt:hover {
+    color: var(--color-black);
+    border-bottom: .25rem solid var(--color-primary);
+}

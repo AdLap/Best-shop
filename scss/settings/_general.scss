@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.container {
+  margin: 0 auto;
+  width: 1352px;
+}
+.main-content {
+  width: 100vw;
+}
+.title {
+  font-family: var(--raleway);
+  font-size: 36px;
+  font-weight: var(--regular);
+  color: var(--color-black);
+  line-height: 42px/*1.2em*/;
+}
+.txt {
+  font-family: var(--open-sans);
+  font-size: 16px;
+  font-weight: var(--regular);
+  color: var(--color-black);
+  line-height: 22px/*1.3em*/;
+}
+.logo {
+  font-family: var(--raleway);
+  font-weight: var(--light);
+  color: var(--color-primary);
+  text-align: left;
+}
