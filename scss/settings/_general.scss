@@ -17,9 +17,9 @@ a {
   }
 }
 
-.main-content {
-  width: 100vw;
-}
+//.main-content {
+//  width: 100vw;
+//}
 
 .title {
   @include title-font(36px, $regular);
