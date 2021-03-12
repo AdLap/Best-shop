@@ -1,10 +1,9 @@
 .section__statistic__box {
-  width: 100vw;
+  width: 100%;
   padding: 3.125rem 0;
   background-color: $color-white;
   box-shadow: 0 -5px 80px $color-light-shadow;
-  //border: 2px solid red;
-  margin-top: 50px;
+  border: 2px solid red;
 }
 
 .statistic__content__box {
@@ -12,26 +11,38 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-}
-
-.statistic__column__box {
-  display: flex;
-  justify-content: space-evenly;
+  align-items: center;
 }
 
 .statistic__title {
   text-align: center;
-  padding-top: 6.25rem /*100px*/;
+}
+
+.statistic__column__box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid blue;
+
+    @media (min-width: 700px) {
+      flex-direction: row;
+      justify-content: space-evenly;
+  }
 }
 
 .statistic__txt__box {
-  margin-top: 6.3rem /*101px*/;
-  margin-bottom: 7.5rem /*px*/;
-  height: 167px;
+  margin-top: 1.562rem;
+  //height: 167px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid green;
+
+  @media (min-width: 700px) {
+    margin: 6.3rem auto 7.5rem auto;
+  }
 }
 
 .statistic__img__box {
@@ -54,15 +65,15 @@
 }
 
 .statistic__img__box__first::before {
-  background-color: var(--color-redish);
+  background-color: $color-redish;
 }
 
 .statistic__img__box__second::before {
-  background-color: var(--color-primary);
+  background-color: $color-primary;
 }
 
 .statistic__img__box__last::before {
-  background-color: var(--color-green);
+  background-color: $color-green;
 }
 
 .statistic__txt__img {
@@ -85,28 +96,18 @@
 }
 
 .statistic__txt__number {
-  margin-top: .87rem /*14px*/;
-  font-family: var(--raleway);
-  font-size: 20px;
-  font-weight: var(--extra-bold);
-  text-align: center;
-  line-height: 24px;
+  @include title-font(20px, $extra-bold);
+  margin-top: .87rem;
+  line-height: 1.2em;
   letter-spacing: .3em;
-  color: var(--color-black);
 }
 
 .statistic__txt__txt {
-  margin-top: 1.2rem /*19px*/;
-  font-family: var(--raleway);
-  font-size: 17px;
-  font-weight: var(--regular);
+  @include title-font(17px, $regular);
+  margin-top: 1.2rem;
   text-align: center;
-  line-height: 20px;
-  letter-spacing: 0;
-  color: var(--color-grey);
+  line-height: 1.176em;
+  color: $color-grey;
 }
 
-@media (min-width: 700px) {
-
-}
 

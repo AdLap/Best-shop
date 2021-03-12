@@ -1,9 +1,12 @@
 .section__open__box {
   height: calc(100vh - 70px);
   //position: relative;
+  border: 2px solid yellow;
 }
 .open__content {
   width: 100%;
+  height: 100%;
+
 }
 .open__title {
   @include title-font(49px, $regular);
@@ -45,6 +48,7 @@
     //left: 50%;
     //transform: translate(-50%);
     width: 100%;
+    height: 100%;
     //height: 594px;
     //margin-top: 3.187rem;
     padding: 3.187rem 0 0 0;
