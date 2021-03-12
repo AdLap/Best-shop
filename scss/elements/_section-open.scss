@@ -1,58 +1,67 @@
-.section-open-box {
-  position: relative;
-  margin-top: 8.1rem/*130px*/;
-}
-.open-content {
+.section__open__box {
+  height: calc(100vh - 70px);
   position: relative;
 }
-.open-title {
-  font-family: var(--raleway);
-  font-size: 49px;
-  font-weight: var(--regular);
-  line-height: 57px/*1.16em*/;
-  color: var(--color-black);
+
+.open__title {
+  @include title-font(49px, $regular);
   text-align: center;
   letter-spacing: 0;
+  padding-top: 6.25rem;
 }
-.open-txt {
-  text-align: center;
-  margin-top: 1.25rem/*20px*/;
-}
-.open-btn-box {
+
+.open__txt {
+   text-align: center;
+   margin-top: 1.25rem;
+ }
+
+.open__btn__box {
   display: flex;
   justify-content: center;
-  margin-top: 2.3rem/*37px*/;
+  margin-top: 1.74rem;
 }
-.open-btn {
+
+.open__btn {
+  @include text-font(1rem, $bold);
   display: inline-block;
-  font-family: var(--open-sans);
-  font-size: 16px;
-  font-weight: var(--bold);
-  line-height: 22px;
-  color: var(--color-white);
+  color: $color-white;
   letter-spacing: 0;
-  background-color: var(--color-primary);
+  text-transform: none;
+  background-color: $color-primary;
   border-radius: 40px;
-  box-shadow: 5px 10px 14px var(--color-primary-shadow);
-  padding: 22px 157px;
+  box-shadow: 5px 10px 14px $color-primary-shadow;
+  padding: 1.375em 5.75em;
   cursor: pointer;
 }
-.open-btn:hover {
+.open__btn:hover {
   transform: scale(1.03);
   transition: .2s;
 }
-.open-img-box {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%);
+
+.open__img__box {
+  //position: relative;
+  //left: 50%;
+  //transform: translate(-50%);
   width: 100vw;
-  height: 594px;
-  margin-top: 0;
+  //height: 594px;
+  margin-top: 3.187rem;
 }
-.open-img {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
-  max-width: 100%;
+.open__img {
+  //position: absolute;
+  //bottom: 0;
+  //left: 50%;
+  //transform: translate(-50%);
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 700px) {
+
+  //.open__content {
+  //  position: relative;
+  //}
+
+  .open__btn {
+    padding: 1.375em 9.812em;
+  }
 }
