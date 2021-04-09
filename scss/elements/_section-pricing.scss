@@ -17,13 +17,13 @@
   position: relative;
 }
 .pricing-content-box-first {
-  border: 1px solid var(--color-redish);
+  border: 1px solid $color-redish;
 }
 .pricing-content-box-second {
-  border: 1px solid var(--color-primary);
+  border: 1px solid $color-primary;
 }
 .pricing-content-box-last {
-  border: 1px solid var(--color-green);
+  border: 1px solid $color-green;
 }
 .pricing-content-box * {
   text-align: center;
@@ -33,7 +33,7 @@
   font-weight: var(--bold);
   font-size: 20px;
   line-height: 24px;
-  color: var(--color-black);
+  color: $color-black;
   margin: 34px auto 14px auto;
 }
 .pricing-price {
@@ -43,14 +43,14 @@
   line-height: 64px;
 }
 .pricing-price-first {
-  color: var(--color-redish);
+  color: $color-redish;
 }
 .pricing-price-second {
-  color: var(--color-primary);
+  color: $color-primary;
   position: relative;
 }
 .pricing-price-last {
-  color: var(--color-green);
+  color: $color-green;
   position: relative;
 }
 .pricing-price-second::after,
@@ -60,7 +60,7 @@
   font-weight: var(--bold);
   font-size: 12px;
   line-height: 14px;
-  color: var(--color-black);
+  color: $color-black;
   position: absolute;
   bottom: -19px;
   left: 50%;
@@ -74,7 +74,7 @@
   font-weight: var(--regular);
   font-size: 14px;
   line-height: 41px;
-  color: var(--color-black);
+  color: $color-black;
   position: relative;
 }
 .pricing-list-txt::before {
@@ -109,33 +109,33 @@
   font-size: 13px;
   line-height: 18px;
   text-transform: none;
-  color: var(--color-white);
+  color: $color-white;
   position: absolute;
   bottom: -25px;
   left: calc(50% - 75px);
 }
 .pricing-btn-first {
-  background-color: var(--color-redish);
+  background-color: $color-redish;
 }
 .pricing-btn-first:hover {
-  box-shadow: 0 0 14px var(--color-redish);
+  box-shadow: 0 0 14px $color-redish;
 }
 .pricing-btn-second {
-  background-color: var(--color-blue);
+  background-color: $color-blue;
 }
 .pricing-btn-second:hover {
-  box-shadow: 0 0 14px var(--color-blue);
+  box-shadow: 0 0 14px $color-blue;
 }
 .pricing-btn-last {
-  background-color: var(--color-green);
+  background-color: $color-green;
 }
 .pricing-btn-last:hover {
-  box-shadow: 0 0 14px var(--color-green);
+  box-shadow: 0 0 14px $color-green;
 }
 .pricing-content-box-second {
   transform: scale(1.1, 1.1);
-  box-shadow: 5px 10px 27px var(--color-primary-shadow);
+  box-shadow: 5px 10px 27px $color-primary-shadow;
 }
 .pricing-btn-second {
-  box-shadow: 5px 10px 14px var(--color-primary-shadow);
+  box-shadow: 5px 10px 14px $color-primary-shadow;
 }

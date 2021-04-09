@@ -22,7 +22,7 @@ a {
 //}
 
 .title {
-  @include title-font(36px, $regular);
+  @include title-font(2.25rem, $regular);
   //font-family: var(--raleway);
   //font-size: 36px;
   //font-weight: var(--regular);
@@ -31,7 +31,7 @@ a {
 }
 
 .txt {
-  @include text-font(16px, $regular);
+  @include text-font(1rem, $regular);
   //font-family: var(--open-sans);
   //font-size: 16px;
   //font-weight: var(--regular);
