@@ -44,7 +44,8 @@
 }
 
 .benefits__txt__box {
-  margin-top: 1.68rem;
+  margin: 1.68rem 1.312rem auto 1.312rem;
+  padding: 0 !important;
 
   @media (min-width: 1124px) {
     position: relative;
@@ -59,8 +60,6 @@
 }
 
 .benefits__txt__box__first {
-  //margin: 91px auto;
-  width: 272px;
   order: 1;
 
   @media (min-width: 1124px) {
@@ -114,6 +113,9 @@
   left: 0;
 }
 
+/*
+second box
+*/
 
 .benefits__content__box__second {
 
@@ -122,33 +124,51 @@
   }
 }
 .benefits__txt__box__second {
-  max-width: 416px;
-  margin: 69px 20px 71px auto;
+  order: 1;
 
-  &::after {
+  @media (min-width: 1124px) {
+    max-width: 416px;
+    margin: 69px 20px 71px auto;
+    order: 0;
+
+    &::after {
     background-color: $color-primary;
+    }
   }
 }
 
 .benefits__img__box__second {
-  max-width: 426px;
-  max-height: 328px;
-  margin: 29px auto 13px 70px;
+  width: 132px !important;
+  height: 132px;
+  margin-top: 20px;
   position: relative;
+  padding: 0;
+
+  @media (min-width: 1124px) {
+    width: 426px !important;
+    height: 328px;
+    margin: 29px auto 13px 70px;
+  }
 
   &::before {
     content: "";
-    width: 320px;
-    height: 320px;
+    width: 132px;
+    height: 132px;
     background-color: $color-primary;
     border-radius: 50%;
     position: absolute;
-    bottom: 25px;
+    bottom: 0;
+
+    @media (min-width: 1124px) {
+      width: 320px;
+      height: 320px;
+      bottom: 25px;
+    }
   }
 }
 .benefits__content__img__second {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   position: absolute;
 }
 
@@ -162,6 +182,10 @@
     justify-content: space-between;
   }
 }
+
+/*
+last box
+*/
 
 .benefits__content__box__last {
   max-width: 623px;
