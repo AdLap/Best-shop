@@ -1,6 +1,10 @@
 .section__benefits__box {
   background-color: $color-light-grey;
-  padding: 6.5rem/*105px*/ 0;
+  padding: 2.625rem 0;
+
+  @media (min-width: 1124px) {
+    padding: 6.5rem 0;
+  }
 }
 
 .benefits__container {
