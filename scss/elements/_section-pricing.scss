@@ -26,32 +26,50 @@
 }
 
 .pricing__content__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 293px;
+  height: 251px;
   border-radius: 18px;
   position: relative;
-  //margin-bottom: 3.375rem;
-  text-align: center;
+
+  @media (min-width: 1124px) {
+    display: block;
+    //margin-bottom: 3.375rem;
+    text-align: center;
+    width: 372px;
+    height: 461px;
+  }
 
   &__first {
     border: 1px solid $color-redish;
+
   }
 
   &__second {
     border: 1px solid $color-primary;
+    box-shadow: 5px 10px 27px $color-primary-shadow;
+    //width: 339px;
+    //height: 227px;
+    transform: scale(1.1, 1.1);
+
+    @media (min-width: 1124px) {
+      //width: 372px;
+      //height: 461px;
+
+    }
   }
 
   &__last {
     border: 1px solid $color-green;
   }
 
-  @media (min-width: 1124px) {
-    width: 372px;
-
-    
-  }
 }
 
 .pricing__content__title {
   @include title-font(1.25rem, $bold);
+  text-align: center;
 
   @media (min-width: 1124px) {
     margin: 34px auto 14px auto;
@@ -60,6 +78,7 @@
 
 .pricing__price {
   @include text-font(2.875rem, $light);
+  text-align: center;
 
   &__first {
     color: $color-redish;
@@ -82,17 +101,26 @@
     position: absolute;
     bottom: -19px;
     left: 50%;
+    white-space: nowrap;
     transform: translate(-50%);
   }
 }
 
 .pricing__list {
-  margin: 69px auto 55px auto;
+
+  @media (min-width: 1124px) {
+    margin: 69px auto 55px auto;
+  }
 }
+
 .pricing__list__txt {
   @include text-font(.875rem, $regular);
-  line-height: 41px;
+  line-height: 35px;
   position: relative;
+
+  @media (min-width: 1124px) {
+    line-height: 41px;
+  }
 
   &::before {
     content: url(../../assets/Ckechmark-1.svg);
@@ -127,10 +155,11 @@
   bottom: -25px;
   left: calc(50% - 75px);
 }
+
 .pricing__btn__first {
   background-color: $color-redish;
 
-  &: hover {
+  &:hover {
     box-shadow: 0 0 14px $color-redish;
   }
 }
@@ -152,8 +181,5 @@
   }
 }
 
-.pricing__content__box__second {
-  transform: scale(1.1, 1.1);
-  box-shadow: 5px 10px 27px $color-primary-shadow;
-}
+
 
