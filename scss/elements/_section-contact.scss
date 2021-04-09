@@ -1,70 +1,66 @@
-.section-contact-box {
+.section__contact__box {
   padding-bottom: 59px;
 }
-.contact-box-container {
+.contact__box__container {
   width: 896px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
-.contact-column-left {
+.contact__column__left {
   display: flex;
   flex-direction: column;
 }
-.contact-txt {
+.contact__txt {
   text-align: left;
   margin: 22px 0 40px 0;
 }
-.contact-data-txt {
-  color: var(--color-grey);
+.contact__data__txt {
+  color: $color-grey;
 }
-.contact-email-txt {
+.contact__email__txt {
   margin-right: 20px;
 }
-.contact-column-right {
+.contact__column__right {
   display: flex;
   flex-direction: column;
   width: 440px;
 }
-.contact-form-box {
+.contact__form__box {
   display: flex;
   flex-direction: column;
 }
-.contact-txt {
+.contact__txt {
   text-align: left;
 }
-.contact-label {
-  font-family: var(--open-sans);
-  font-weight: var(--bold);
-  font-size: 11px;
-  line-height: 15px;
+.contact__label {
+  @include text-font(.686rem, $bold);
   letter-spacing: 3.28px;
   text-align: left;
-  color: var(--color-primary);
+  color: $color-primary;
   text-transform: uppercase;
 }
-.contact-input {
+.contact__input {
+  @include text-font(1rem, $regular);
   border: none;
-  border-bottom: 1px solid var(--color-contact-input-border);
+  border-bottom: 1px solid $color-contact-input-border;
   width: 100%;
   height: 42px;
-  font-family: var(--open-sans);
-  font-weight: var(--regular);
-  font-size: 16px;
-  line-height: 22px;
-  color: var(--color-black);
 }
-.contact-checkbox-txt {
+.contact__checkbox__txt {
+  @include text-font(.75rem, $regular);
+  color: $color-checkbox-txt;
+  text-align: left;
   padding-left: 34px;
 }
-.contact-checkbox {
+.contact__checkbox {
   margin-top: 30px;
   display: flex;
   /*gap: 34px;*/
   position: relative;
   cursor: pointer;
 }
-.contact-checkbox-input {
+.contact__checkbox__input {
   outline: none;
   border: none;
   width: 0;
@@ -72,44 +68,41 @@
   position: absolute;
   left: -99999999px;
 }
-.contact-checkbox-txt::before {
+.contact__checkbox__txt::before {
   content: "";
   width: 24px;
   height: 24px;
-  border: 1px solid var(--color-contact-input-border);
+  border: 1px solid $color-contact-input-border;
   border-radius: 4px;
-  background-color: var(--color-white);
+  background-color: $color-white;
   position: absolute;
   left: 0;
 }
-.contact-checkbox-input + span:hover::before {
-  box-shadow: 0 0 14px var(--color-contact-input-border);
+.contact__checkbox__input + span:hover::before {
+  box-shadow: 0 0 14px $color-contact-input-border;
 }
-.contact-checkbox-input:checked + span::before {
+.contact__checkbox__input:checked + span::before {
   background-color: transparent;
   background-image: url(../assets/Checkmark.svg);
   background-repeat: no-repeat;
   background-size: 12px 11px;
   background-position: center;
 }
-.contact-btn {
+.contact__btn {
   margin-top: 20px;
   display: inline-block;
   align-self: flex-end;
   padding: 20px 97px;
-  background-color: var(--color-primary);
+  background-color: $color-primary;
   border: none;
   border-radius: 35px;
-  box-shadow: 5px 10px 14px var(--color-primary-shadow);
+  box-shadow: 5px 10px 14px $color-primary-shadow;
 }
-.contact-btn:hover {
-  box-shadow: 0 0 14px var(--color-primary);
+.contact__btn:hover {
+  box-shadow: 0 0 14px $color-primary;
 }
-.contact-btn a {
-  color: var(--color-white);
+.contact__btn a {
+  @include text-font(.812rem, $bold);
+  color: $color-white;
   text-transform: none;
-  font-family: var(--open-sans);
-  font-weight: var(--bold);
-  font-size: 13px;
-  line-height: 18px;
 }
