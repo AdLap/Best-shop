@@ -188,33 +188,61 @@ last box
 */
 
 .benefits__content__box__last {
-  max-width: 623px;
   background-color: $color-white;
   border: 1px solid $color-benefits-border-box;
   border-radius: 5px;
+
+  @media (min-width: 1124px) {
+    width: 623px;
+  }
 }
+
 .benefits__txt__box__last {
   background-color: $color-white;
-  width: 554px;
-  margin: 69px 34px 71px 35px;
+
+  @media (min-width: 1124px) {
+    margin: 69px 34px 71px 35px;
+
+    &::after {
+      background-color: $color-green;
+    }
+  }
 }
-.benefits__txt__box__last::after {
-  background-color: $color-green;
-}
+
 .benefits__img__container__last {
   background-color: $color-green;
-  max-width: 440px;
-  max-height: 370px;
+  width: 100%;
+  height: 195px;
   position: relative;
   border: 1px solid $color-benefits-border-box;
   border-radius: 5px;
+
+  @media (min-width: 1124px) {
+    width: 440px !important;
+    height: 370px;
+
+  }
 }
+
 .benefits__img__box__last {
   width: 296px;
   height: 208px;
-  margin: 98px 82px 64px 62px;
+  //margin: 98px 82px 64px 62px;
   position: absolute;
+  top: 24px;
+  right: 36px;
+
+
+  @media (min-width: 1124px) {
+    width: 296px;
+    height: 208px;
+    margin: 98px 82px 64px 62px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
+
 .benefits__content__img__last {
   width: 100%;
   height: auto;
