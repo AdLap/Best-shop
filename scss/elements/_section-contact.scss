@@ -3,9 +3,13 @@
 }
 
 .contact__box__container {
-  width: 896px;
+  width: 312px;
   margin: 155px auto 0 auto;
   justify-content: space-between;
+
+  @media (min-width: 1200px) {
+    width: 896px;
+  }
 }
 
 .contact__column__left {
@@ -27,14 +31,24 @@
 }
 
 .contact__column__right {
+  margin-top: 53px;
   display: flex;
   flex-direction: column;
   width: 440px;
+
+  @media (min-width: 1200px) {
+    margin-top: 0;
+  }
 }
 
 .contact__form__box {
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
 }
 
 .contact__label {
@@ -74,7 +88,6 @@
 .contact__checkbox {
   margin-top: 30px;
   display: flex;
-  /*gap: 34px;*/
   position: relative;
   cursor: pointer;
 }
