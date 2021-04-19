@@ -1,7 +1,7 @@
 .section__statistic__box {
   width: 100%;
   padding: 3.125rem 0;
-  background-color: $color-white;
+  background-color: $color-statistic-background;
   box-shadow: 0 -5px 80px $color-light-shadow;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .statistic__img__box__first::before {
-  background-color: $color-redish;
+  background-color: $color-second;
 }
 
 .statistic__img__box__second::before {
@@ -69,7 +69,7 @@
 }
 
 .statistic__img__box__last::before {
-  background-color: $color-green;
+  background-color: $color-third;
 }
 
 .statistic__txt__img {
@@ -92,16 +92,14 @@
 }
 
 .statistic__txt__number {
-  @include title-font(20px, $extra-bold);
+  @include title-font(1.25rem, $extra-bold);
   margin-top: .87rem;
-  line-height: 1.2em;
   letter-spacing: .3em;
 }
 
 .statistic__txt__txt {
-  @include title-font(17px, $regular);
+  @include title-font(1.062rem, $regular);
   margin-top: 1.2rem;
   text-align: center;
-  line-height: 1.176em;
-  color: $color-grey;
+  color: $color-statistic-txt;
 }
