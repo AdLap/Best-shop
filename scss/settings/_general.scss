@@ -1,7 +1,3 @@
-//* {
-//  box-sizing: border-box;
-//}
-
 a {
   text-decoration: none;
   text-transform: uppercase;
@@ -17,27 +13,14 @@ a {
   }
 }
 
-//.main-content {
-//  width: 100vw;
-//}
-
 .title {
   @include title-font(2.25rem, $regular);
-  //font-family: var(--raleway);
-  //font-size: 36px;
-  //font-weight: var(--regular);
-  //color: var(--color-black);
-  //line-height: 42px/*1.2em*/;
 }
 
 .txt {
   @include text-font(1rem, $regular);
-  //font-family: var(--open-sans);
-  //font-size: 16px;
-  //font-weight: var(--regular);
-  //color: var(--color-black);
-  //line-height: 22px/*1.3em*/;
 }
+
 .logo {
   @extend %logo;
 }
