@@ -1,6 +1,6 @@
 .header__bg {
     width: 100vw;
-    background-color: $color-white;
+    background-color: $color-nav-background;
     height: 70px;
     box-shadow: 0 3px 6px $color-light-shadow;
 }
@@ -29,6 +29,10 @@
     width: 0;
     height: 0;
     cursor: pointer;
+
+    @media (min-width: 900px) {
+        display: none;
+    }
 }
 
 .hamburger__icon {
@@ -36,7 +40,7 @@
     width: 20px;
     height: 2px;
     margin-right: 15px;
-    background-color: $color-blue;
+    background-color: $color-burger;
     position: relative;
 
     &::before,
@@ -45,7 +49,7 @@
         display: block;
         width: 20px;
         height: 2px;
-        background-color: $color-blue;
+        background-color: $color-burger;
         position: absolute;
     }
     &::before {
@@ -54,14 +58,11 @@
     &::after {
         bottom: -5px;
     }
-}
 
-//.hamburger__check,
-//.hamburger__icon {
-//    position: absolute;
-//    top: 29px;
-//    right: 30px;
-//}
+    @media (min-width: 900px) {
+        display: none;
+    }
+}
 
 .hamburger__check:checked + .hamburger__icon,
 .hamburger__check:checked + .hamburger__icon::before,
@@ -69,7 +70,7 @@
     background-color: red;
 }
 
-.hamburger__check:checked + .header__menu {
+.hamburger__check:checked ~ .header__menu {
     transform: translateY(0);
 }
 
@@ -81,26 +82,9 @@
     top: 80px;
     transform: translateY(-200%);
     box-shadow: 0 3px 6px $color-light-shadow;
-    z-index: 3;
-}
+    z-index: 0;
 
-.header__menu__txt {
-    @include text-font(11px, $bold);
-    letter-spacing: .3em;
-    color: $color-grey;
-    line-height: 2em;
-
-    &:hover {
-        color: $color-black;
-    }
-}
-
-@media (min-width: 700px) {
-    .hamburger__label {
-        display: none;
-    }
-
-    .header__menu {
+    @media (min-width: 900px) {
         position: static;
         display: flex;
         justify-content: space-between;
@@ -109,16 +93,23 @@
         box-shadow: none;
         transform: none;
     }
+}
 
-    .header__menu__txt {
-        @include text-font(11px, $bold);
-        letter-spacing: .3em;
+.header__menu__txt {
+    @include text-font(.687rem, $bold);
+    letter-spacing: .3em;
+    color: $color-nav-txt;
+    cursor: pointer;
+    line-height: 2em;
+
+    &:hover {
+        color: $color-nav-hover;
+    }
+
+    @media (min-width: 900px) {
         text-align: center;
-        color: $color-grey;
-        cursor: pointer;
 
         &:hover {
-            color: $color-black;
             border-bottom: 4px solid $color-primary;
             padding-bottom: 27px;
         }

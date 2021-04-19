@@ -8,7 +8,7 @@
 }
 
 .open__title {
-  @include title-font(49px, $regular);
+  @include title-font(3.062rem, $regular);
   text-align: center;
   letter-spacing: 0;
   padding-top: 6.25rem;
@@ -28,7 +28,7 @@
 .open__btn {
   @include text-font(1rem, $bold);
   display: inline-block;
-  color: $color-white;
+  color: $color-btn-txt;
   letter-spacing: 0;
   text-transform: none;
   background-color: $color-primary;
@@ -57,10 +57,9 @@
   bottom: 0;
   width: 100vw;
   height: calc(100vh - 434px);
-  margin: 3.187rem 0 0 0;
+  margin-top: 3.187rem;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1024px) {
     height: calc(100vh - 396px);
   }
 }
-
