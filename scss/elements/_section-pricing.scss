@@ -112,7 +112,7 @@
   }
 
   &::before {
-    content: url(../../assets/Ckechmark-1.svg);
+    content: url("../assets/Ckechmark-1.svg");
     display: inline-block;
     width: 11px;
     height: 11px;
@@ -125,12 +125,12 @@
 .pricing__list__first li {
   &:nth-last-child(2)::before,
   &:last-child::before {
-    content: url(../../assets/Close.svg);
+    content: url("../assets/Close.svg");
   }
 }
 
 .pricing__list__second li:last-child::before {
-  content: url(../../assets/Close.svg);
+  content: url("../assets/Close.svg");
 }
 
 .pricing__btn {
