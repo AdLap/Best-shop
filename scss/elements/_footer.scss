@@ -1,7 +1,7 @@
 .footer__box {
   width: 100vw;
   height: 89px;
-  background-color: $color-light-grey;
+  background-color: $color-footer-box-background;
   box-shadow: 0 -5px 40px $color-light-shadow;
 }
 
@@ -23,16 +23,12 @@
   font-size: 1.625rem;
   line-height: 1.875rem;
   text-align: left;
-
-  @media (min-width: 1200px) {
-    margin: 20.5px 0 6.5px 0;
-  }
 }
 
 .footer__rights {
   font-size: .687rem;
   line-height: .937rem;
-  color: $color-grey;
+  color: $color-footer-right;
   text-align: left;
 }
 

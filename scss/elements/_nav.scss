@@ -76,16 +76,20 @@
 
 .header__menu {
     width: 100%;
-    padding-left: 25px;
+    height: 175px;
+    background-color: $color-nav-background;
+    padding: 25px 0 0 25px;
     position: absolute;
     left: 0;
     top: 80px;
     transform: translateY(-200%);
     box-shadow: 0 3px 6px $color-light-shadow;
-    z-index: 0;
+    z-index: 1;
 
     @media (min-width: 900px) {
+        background-color: transparent;
         position: static;
+        padding: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -96,7 +100,7 @@
 }
 
 .header__menu__txt {
-    @include text-font(.687rem, $bold);
+    @include text-font(.9377rem, $bold);
     letter-spacing: .3em;
     color: $color-nav-txt;
     cursor: pointer;

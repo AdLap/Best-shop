@@ -7,8 +7,9 @@
   margin: 155px auto 0 auto;
   justify-content: space-between;
 
-  @media (min-width: 1200px) {
-    width: 896px;
+  @media (min-width: 750px) {
+    width: 100%;
+    max-width: 896px;
   }
 }
 
@@ -23,7 +24,7 @@
 }
 
 .contact__data__txt {
-  color: $color-grey;
+  color: $color-contact-data-txt;
 }
 
 .contact__email__txt {
@@ -36,7 +37,7 @@
   flex-direction: column;
   width: 440px;
 
-  @media (min-width: 1200px) {
+  @media (min-width: 750px) {
     margin-top: 0;
   }
 }
@@ -45,10 +46,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  @media (min-width: 1200px) {
-    width: 100%;
-  }
 }
 
 .contact__label {
@@ -79,7 +76,6 @@
     height: 24px;
     border: 1px solid $color-contact-input-border;
     border-radius: 4px;
-    background-color: $color-white;
     position: absolute;
     left: 0;
   }
@@ -129,7 +125,7 @@
 
   & a {
     @include text-font(.812rem, $bold);
-    color: $color-white;
+    color: $color-btn-txt;
     text-transform: none;
   }
 }
