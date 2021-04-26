@@ -56,6 +56,10 @@
   text-transform: uppercase;
 }
 
+.contact__email__label {
+  margin-top: 42px;
+}
+
 .contact__input {
   @include text-font(1rem, $regular);
   border: none;

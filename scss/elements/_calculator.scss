@@ -1,0 +1,214 @@
+// created by Coders Lab
+
+.calc {
+  padding: 30px 15px;
+  background-color: $color-calc-background-second;
+
+  @media (min-width: 1024px) {
+    padding: 80px 0;
+  }
+
+  h2 {
+    @include title-font(2.25rem, $regular);
+    text-align: center;
+  }
+
+  &__columns {
+    display: block;
+    max-width: 865px;
+    margin: 50px auto 0;
+
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    margin-right: 0;
+
+    @media (min-width: 1024px) {
+      width: 50%;
+      margin-right: 20px;
+    }
+  }
+
+
+  &__input input,
+  &__select .select__input {
+    @include text-font(.812rem, $regular);
+    color: $color-calc-input;
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid $color-primary;
+    padding: 11px 20px;
+    line-height: 1em;
+    font-size: 0.8125rem;
+    box-shadow: 0 3px 6px $color-primary-shadow;
+    margin-bottom: 20px;
+    background-color: $color-calc-background-main;
+  }
+
+  &__input {
+    input {
+      &::placeholder {
+        color: $color-calc-placeholder;
+      }
+    }
+  }
+
+  &__select {
+    position: relative;
+
+    .select__input {
+      position: relative;
+      height: 40px;
+      vertical-align: middle;
+      padding: 13px 20px;
+      cursor: pointer;
+      color: $color-calc-placeholder;
+
+      &::after {
+        content: "";
+        background-image: url("../assets/Arrow Down.svg");
+        width: 22px;
+        height: 22px;
+        display: block;
+        position: absolute;
+        right: 14px;
+        top: 9px;
+      }
+    }
+
+    .select__dropdown {
+      @include text-font(.812rem, $regular);
+      display: none;
+      position: absolute;
+      z-index: 1;
+      background-color: $color-calc-background-main;
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid $color-second;
+      overflow: hidden;
+
+      li {
+        font-size: 13px;
+        padding: 10px 20px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-calc-background-second;
+        }
+      }
+    }
+
+
+    &.open {
+      .select__input::after {
+        transform: rotate(180deg);
+      }
+
+      .select__dropdown {
+        display: block;
+      }
+    }
+  }
+
+  .form__checkbox {
+
+    input {
+      outline: none;
+      border: none;
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: -99999999px;
+
+
+      &:checked + span {
+        background-color: transparent;
+        background-image: url("../assets/Checkmark.svg");
+        background-repeat: no-repeat;
+        background-size: 12px 11px;
+        background-position: center;
+      }
+    }
+
+    .checkbox {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border: 1px solid $color-contact-input-border;
+      border-radius: 4px;
+
+      &:hover {
+        box-shadow: 0 0 14px $color-contact-input-border;
+      }
+    }
+
+    .consent__text {
+      @include text-font(.75rem, $regular);
+      color: $color-checkbox-txt;
+      text-align: left;
+      padding-left: 34px;
+      position: relative;
+      top: -22px;
+
+
+    }
+  }
+
+  &__summary {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1024px) {
+      width: 50%;
+      margin-left: 20px;
+    }
+
+    .summary__total,
+    .list__item {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+      border-radius: 6px;
+      justify-content: space-between;
+      align-items: center;
+      color: $color-calc-background-main;
+      font-size: 0.875rem;
+      display: none;
+
+      &.open {
+        display: flex;
+      }
+    }
+
+    .summary__total {
+      width: 50%;
+      align-self: flex-end;
+      margin-top: 22px;
+      padding: 8px 20px;
+      background-color: $color-primary;
+
+      .total__price {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+
+    .list__item {
+      padding: 6px 20px;
+      background-color: $color-third;
+      margin-bottom: 8px;
+
+      .item {
+        &__price {
+          font-weight: 700;
+          font-size: 1.125rem;
+        }
+      }
+    }
+  }
+}
