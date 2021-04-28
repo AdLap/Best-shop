@@ -14,79 +14,116 @@ const inputNumber = document.querySelectorAll('[type=number]');
 // total price
 
 const totalPrice = document.querySelector('#total-price');
+const productsSum = '';
+const ordersSum = '';
 
-//---------------------------------------------input events
 
-const calcForm = document.querySelector('.calc__form');
+// form validation functions
+
+function removeOpen(element) {
+    element.classList.remove('open');
+}
+
+function changeBackgroundColor(element, color) {
+    element.style.backgroundColor = color;
+}
+
+function errorText(element) {
+    element.innerText = 'enter a positive integer';
+}
+
+// form displaying summary functions
+
+function addOpen(element) {
+    element.classList.add('open');
+}
 
 formInput.forEach(input => input.addEventListener('input', e => {
 
 // validation inputs
 
-        if (!Number.isInteger(Number(e.target.value)) || Number(e.target.value <= 0)) {
-            alert('enter a positive integer')
-            e.target.value = '';
-            summaryListItem.forEach(el => el.classList.remove('open'));
-            totalPrice.classList.remove('open');
-            return;
+        summaryListItem.forEach(el => el.style.backgroundColor = '#55DFB4FF');
+
+        if (!Number.isInteger(Number(e.target.value)) || Number(e.target.value <= 0) || (e.target.value.length === 0)) {
+            console.log('e.target.value', e.target.value);
+            if (e.target === products) {
+                errorText(summaryItemCalc[0]);
+                changeBackgroundColor(summaryListItem[0], 'tomato');
+               return;
+            }
+
+            if (e.target === orders) {
+                errorText(summaryItemCalc[1]);
+                changeBackgroundColor(summaryListItem[1], 'tomato');
+                return;
+            }
         }
 
-        if (e.target.value.length === 0) {
-            summaryListItem.forEach(el => el.classList.remove('open'));
-            totalPrice.classList.remove('open');
-        }
+       //if (products.value.length === 0) {
+            //errorText(summaryListItem[0]);
+            // removeOpen(summaryListItem[0]);
+            //removeOpen(totalPrice);
+       //}
+
+       // if (orders.value.length === 0) {
+            //errorText(summaryListItem[1]);
+            // removeOpen(summaryListItem[1]);
+            // removeOpen(totalPrice);
+       // }
 
 // displaying summary inputs
 
         if (e.target === products) {
-            summaryListItem[0].classList.add('open');
-            totalPrice.classList.add('open');
-            const productSum = products.value * .5;
+            addOpen(summaryListItem[0]);
+            addOpen(totalPrice);
+            let productSum = products.value * .5;
             summaryItemCalc[0].innerText = `${products.value} * $0.5`;
             summaryItemPrice[0].innerText = `$${productSum}`;
-            // summaryItemCalc[0].innerText = `${products.value} * $0.5`;
-            // summaryItemPrice[0].innerText = `$${products.value * .5}`;
+            return productSum = productsSum;
         }
 
         if (e.target === orders) {
-            summaryListItem[1].classList.add('open');
-            totalPrice.classList.add('open');
+            addOpen(summaryListItem[1]);
+            addOpen(totalPrice);
+            let orderSum = orders.value * .25;
             summaryItemCalc[1].innerText = `${orders.value} * $0.25`;
-            summaryItemPrice[1].innerText = `$${orders.value * .25}`;
+            summaryItemPrice[1].innerText = `$${orderSum}`;
+            return orderSum = ordersSum;
         }
+
     })
 );
-
+//console.log('productSum2', productSum);
 //------------------------------------------displaying select list
 
 const selectList = document.querySelectorAll('.select__dropdown li');
 const selectInput = document.querySelector('.select__input');
+let packagePrice = 0;
 
 packageSelect.addEventListener('click', e => {
     packageSelect.classList.toggle('open');
+    addOpen(summaryListItem[2]);
+    addOpen(totalPrice);
 
     if (e.target === selectList[0]) {
-        summaryListItem[2].classList.add('open');
-        totalPrice.classList.add('open');
         summaryItemCalc[2].innerText = `Basic`;
         summaryItemPrice[2].innerText = `$0`;
         selectInput.innerText = 'Basic';
+        //return packagePrice = 0;
     }
 
     if (e.target === selectList[1]) {
-        summaryListItem[2].classList.add('open');
-        totalPrice.classList.add('open');
         summaryItemCalc[2].innerText = `Professional`;
         summaryItemPrice[2].innerText = `$25`;
         selectInput.innerText = 'Professional';
+        //return packagePrice = 25;
     }
 
     if (e.target === selectList[2]) {
-        summaryListItem[2].classList.add('open');
-        totalPrice.classList.add('open');
         summaryItemCalc[2].innerText = `Premium`;
         summaryItemPrice[2].innerText = `$60`;
         selectInput.innerText = 'Premium';
+        //return packagePrice = 60;
     }
 });
 
@@ -112,48 +149,7 @@ checkbox.forEach(check => check.addEventListener('change', e => {
 
 //---------------------------------------- TOTAL
 
-const totalSum = (products.value * .5) + (orders.value * .25);
-totalPrice.lastElementChild.innerText = `$${totalSum}`;
 
-// function checkInputNumber() {
-//     inputNumber.forEach(inputs => {
-//         if (!Number.isInteger(Number(this.value)) || Number(this.value <= 0)) {
-//             alert('enter a positive integer')
-//             this.value = '';
-//             summaryListItem.forEach(list => list.classList.remove('open'));
-//             return;
-//         }
-//
-//         if (products.value.length === 0) {
-//             summaryListItem.forEach(list => list.classList.remove('open'));
-//         }
-//     })
-// }
+const totalSum = productsSum + ordersSum + packagePrice;
+totalPrice.lastElementChild.innerText = `${totalSum}`;
 
-
-// products.addEventListener('input', e => {
-//     // summaryItemCalc.forEach(calc => calc.innerText = '');
-//     // summaryItemPrice.forEach(price => price.innerText = '');
-//    console.log(products.value);
-//     //summaryListItem[0].style.backgroundColor = '#55DFB4FF';
-//
-//     if (!Number.isInteger(Number(products.value)) || Number(products.value <= 0)) {
-//         alert('enter a positive integer')
-//         products.value = '';
-//         // summaryItemCalc[0].innerText = 'enter a positive integer';
-//         // summaryListItem[0].style.backgroundColor = 'tomato';
-//         // summaryListItem[0].classList.remove('open');
-//         summaryListItem.forEach(list => list.classList.remove('open'));
-//         return;
-//     }
-//
-//     if (products.value.length === 0) {
-//         //summaryListItem[0].classList.remove('open');
-//         //summaryListItem[0].style.backgroundColor = '#55DFB4FF';
-//         summaryListItem.forEach(list => list.classList.remove('open'));
-//     }
-//
-//     summaryListItem[0].classList.add('open');
-//     summaryItemCalc[0].innerText = `${products.value} * $0.5`;
-//     summaryItemPrice[0].innerText = `${products.value * .5}`;
-// });
