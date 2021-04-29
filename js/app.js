@@ -2,21 +2,24 @@
 const products = document.querySelector('#products');
 const orders = document.querySelector('#orders');
 const packageSelect = document.querySelector('#package');
-const optionList = packageSelect.querySelector('.select__dropdown');
+//const optionList = packageSelect.querySelector('.select__dropdown');
 const formInput = document.querySelectorAll('.form__input');
 
 // summary
 const summaryListItem = document.querySelectorAll('.list__item');
 const summaryItemCalc = document.querySelectorAll('.item__calc');
 const summaryItemPrice = document.querySelectorAll('.item__price');
-const inputNumber = document.querySelectorAll('[type=number]');
+//const inputNumber = document.querySelectorAll('[type=number]');
 
 // total price
 
 const totalPrice = document.querySelector('#total-price');
-const productsSum = '';
-const ordersSum = '';
-
+let productsSum = 0;
+let ordersSum = 0;
+let packagePrice = 0;
+let accountingPrice = 0;
+let terminalPrice = 0;
+let totalSum = productsSum + ordersSum + packagePrice + accountingPrice + terminalPrice;
 
 // form validation functions
 
@@ -38,118 +41,133 @@ function addOpen(element) {
     element.classList.add('open');
 }
 
+const productsSummaryCalc = summaryItemCalc[0];
+const productsList = summaryListItem[0];
+const productsPrice = summaryItemPrice[0];
+const ordersSummaryCalc = summaryItemCalc[1];
+const ordersList = summaryListItem[1];
+const ordersPrice = summaryItemPrice[1];
+
 formInput.forEach(input => input.addEventListener('input', e => {
 
 // validation inputs
 
         summaryListItem.forEach(el => el.style.backgroundColor = '#55DFB4FF');
 
-        if (!Number.isInteger(Number(e.target.value)) || Number(e.target.value <= 0) || (e.target.value.length === 0)) {
-            console.log('e.target.value', e.target.value);
+        if (!Number.isInteger(Number(e.target.value)) || Number(e.target.value <= 0)) {
+
             if (e.target === products) {
-                errorText(summaryItemCalc[0]);
-                changeBackgroundColor(summaryListItem[0], 'tomato');
-               return;
+                errorText(productsSummaryCalc);
+                changeBackgroundColor(productsList, 'tomato');
             }
 
             if (e.target === orders) {
-                errorText(summaryItemCalc[1]);
-                changeBackgroundColor(summaryListItem[1], 'tomato');
-                return;
+                errorText(ordersSummaryCalc);
+                changeBackgroundColor(ordersList, 'tomato');
             }
+            return;
         }
 
-       //if (products.value.length === 0) {
-            //errorText(summaryListItem[0]);
-            // removeOpen(summaryListItem[0]);
-            //removeOpen(totalPrice);
-       //}
+        if (products.value.length === 0) {
+            removeOpen(productsList);
+        }
 
-       // if (orders.value.length === 0) {
-            //errorText(summaryListItem[1]);
-            // removeOpen(summaryListItem[1]);
-            // removeOpen(totalPrice);
-       // }
+        if (orders.value.length === 0) {
+            removeOpen(ordersList);
+        }
 
 // displaying summary inputs
 
         if (e.target === products) {
-            addOpen(summaryListItem[0]);
+            addOpen(productsList);
             addOpen(totalPrice);
-            let productSum = products.value * .5;
-            summaryItemCalc[0].innerText = `${products.value} * $0.5`;
-            summaryItemPrice[0].innerText = `$${productSum}`;
-            return productSum = productsSum;
+            let prodSum = products.value * .5;
+            productsSummaryCalc.innerText = `${products.value} * $0.5`;
+            productsPrice.innerText = `$${prodSum}`;
+            return productsSum = prodSum;
         }
 
         if (e.target === orders) {
-            addOpen(summaryListItem[1]);
+            addOpen(ordersList);
             addOpen(totalPrice);
             let orderSum = orders.value * .25;
-            summaryItemCalc[1].innerText = `${orders.value} * $0.25`;
-            summaryItemPrice[1].innerText = `$${orderSum}`;
-            return orderSum = ordersSum;
+            ordersSummaryCalc.innerText = `${orders.value} * $0.25`;
+            ordersPrice.innerText = `$${orderSum}`;
+            return ordersSum = orderSum;
         }
-
     })
 );
-//console.log('productSum2', productSum);
+
 //------------------------------------------displaying select list
 
 const selectList = document.querySelectorAll('.select__dropdown li');
 const selectInput = document.querySelector('.select__input');
-let packagePrice = 0;
+const packageList = summaryListItem[2];
+const packageCalc = summaryItemCalc[2];
+const packageItemPrice = summaryItemPrice[2];
+
 
 packageSelect.addEventListener('click', e => {
     packageSelect.classList.toggle('open');
-    addOpen(summaryListItem[2]);
-    addOpen(totalPrice);
 
     if (e.target === selectList[0]) {
-        summaryItemCalc[2].innerText = `Basic`;
-        summaryItemPrice[2].innerText = `$0`;
+        packageCalc.innerText = `Basic`;
+        packageItemPrice.innerText = `$0`;
         selectInput.innerText = 'Basic';
-        //return packagePrice = 0;
+        addOpen(packageList);
+        addOpen(totalPrice);
+        return packagePrice = 0;
     }
 
     if (e.target === selectList[1]) {
-        summaryItemCalc[2].innerText = `Professional`;
-        summaryItemPrice[2].innerText = `$25`;
+        packageCalc.innerText = `Professional`;
+        packageItemPrice.innerText = `$25`;
         selectInput.innerText = 'Professional';
-        //return packagePrice = 25;
+        addOpen(packageList);
+        addOpen(totalPrice);
+        return packagePrice = 25;
     }
 
     if (e.target === selectList[2]) {
-        summaryItemCalc[2].innerText = `Premium`;
-        summaryItemPrice[2].innerText = `$60`;
+        packageCalc.innerText = `Premium`;
+        packageItemPrice.innerText = `$60`;
         selectInput.innerText = 'Premium';
-        //return packagePrice = 60;
+        addOpen(packageList);
+        addOpen(totalPrice);
+        return packagePrice = 60;
     }
 });
 
 //------------------------------------------- CHECKBOXES
 
 const checkbox = document.querySelectorAll('.form__checkbox input');
+const accountingSummaryType = summaryListItem[3];
+const accountingSummaryPrice = summaryItemPrice[3];
+const terminalSummaryType = summaryListItem[4];
+const terminalSummaryPrice = summaryItemPrice[4];
 
-checkbox.forEach(check => check.addEventListener('change', e => {
+checkbox.forEach(check => check.addEventListener('click', e => {
 
         if (e.target === checkbox[0]) {
-            summaryListItem[3].classList.toggle('open');
+            accountingSummaryType.classList.toggle('open');
             totalPrice.classList.add('open');
-            summaryItemPrice[3].innerText = `$35`;
+            let accPrice = 5;
+            accountingSummaryPrice.innerText = `$${accPrice}`;
+            return accountingPrice = accPrice;
         }
 
+
         if (e.target === checkbox[1]) {
-            summaryListItem[4].classList.toggle('open');
+            terminalSummaryType.classList.toggle('open');
             totalPrice.classList.add('open');
-            summaryItemPrice[4].innerText = `$5`;
+            let termPrice = 35;
+            terminalSummaryPrice.innerText = `$${termPrice}`;
+            return terminalPrice = termPrice;
         }
     })
 )
 
 //---------------------------------------- TOTAL
 
-
-const totalSum = productsSum + ordersSum + packagePrice;
-totalPrice.lastElementChild.innerText = `${totalSum}`;
+totalPrice.lastElementChild.innerText = `$${totalSum}`;
 
