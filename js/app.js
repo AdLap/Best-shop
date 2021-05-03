@@ -164,7 +164,6 @@ products.input.addEventListener('input', e => {
         products.getPrice();
         totalPrice.summary();
         //products.suma();
-        //totalPrice.cost += products.getPrice();
     }
 )
 
@@ -174,7 +173,6 @@ orders.input.addEventListener('input', e => {
         orders.price();
         orders.getPrice();
         totalPrice.summary();
-    totalPrice.cost += orders.getPrice();
     }
 )
 
@@ -187,7 +185,6 @@ package.input.addEventListener('click', e => {
                 package.options.basic.price();
                 package.options.basic.getPrice();
                 package.options.basic.selectText();
-                totalPrice.cost += package.options.basic.getPrice();
                 totalPrice.summary();
                 break;
 
@@ -197,9 +194,7 @@ package.input.addEventListener('click', e => {
                 package.options.professional.price();
                 package.options.professional.getPrice();
                 package.options.professional.selectText();
-                totalPrice.cost += package.options.professional.getPrice();
                 totalPrice.summary();
-
                 break;
 
             case package.options.premium.input:
@@ -208,7 +203,6 @@ package.input.addEventListener('click', e => {
                 package.options.premium.price();
                 package.options.premium.getPrice();
                 package.options.premium.selectText();
-                totalPrice.cost += package.options.premium.getPrice();
                 totalPrice.summary();
                 break;
         }
@@ -220,7 +214,6 @@ accounting.input.addEventListener('click', e => {
     accounting.summary();
     accounting.price();
     accounting.getPrice();
-    totalPrice.cost += accounting.getPrice();
     totalPrice.summary();
 })
 
@@ -228,7 +221,6 @@ terminal.input.addEventListener('click', e => {
     terminal.summary();
     terminal.price();
     terminal.getPrice();
-    totalPrice.cost += terminal.getPrice();
     totalPrice.summary();
 })
 
