@@ -2,24 +2,28 @@
 
 //-------------------------------------------------------------------------- Functions
 
-function showSummary() {
-    this.output.classList.add('open');
+function addClassOpen() {
+    this.summaryElement.classList.add('open');
 }
 
 function textCalc() {
-    this.text.innerText = `$${this.input.value} * ${this.cost}`;
+    this.calcTextElement.innerText = `$${this.choiceElement.value} * ${this.factor}`;
 }
 
 function textPrice() {
-    this.sum.innerText = `$${Number(this.input.value) * this.cost}`
+    this.priceTextElement.innerText = `$${this.choiceElement.value * this.factor}`
 }
 
 function valuePrice() {
-    return Number(this.input.value) * this.cost;
+    return this.choiceElement.value * this.factor;
 }
 
-function price() {
-    return this.cost;
+function addPrice() {
+    if (this.summaryElement.classList.contains('open')) return this.cost;
+}
+
+function addCheckPrice() {
+    if (this.choiceElement.checked) return this.cost = this.factor;
 }
 
 function packagePrice() {
@@ -27,11 +31,11 @@ function packagePrice() {
 }
 
 function packageCalcText() {
-    package.text.innerText = `${this.name}`;
+    package.calcTextElement.innerText = `${this.name}`;
 }
 
 function packagePriceText() {
-    package.sum.innerText = `$${this.cost}`;
+    package.priceTextElement.innerText = `$${this.cost}`;
 }
 
 function packageSelectText() {
@@ -39,17 +43,17 @@ function packageSelectText() {
 }
 
 function checkPriceText() {
-    this.sum.innerText = `$${this.cost}`;
+    this.priceTextElement.innerText = `$${this.cost}`;
 }
 
 function checkShowSummary() {
-    this.output.classList.toggle('open');
+    this.summaryElement.classList.toggle('open');
 }
 
 function generalPrice() {
-    //totalPrice.cost = this.getPrice();
-    totalPrice.sum.innerText = totalPrice.cost;
-    //return products.getPrice() + orders.getPrice() + package.getPrice() + accounting.getPrice() + terminal.getPrice();
+    totalPrice.cost = products.cost() + orders.cost() + package.cost + accounting.cost + terminal.cost;
+    totalPrice.priceTextElement.innerText = totalPrice.cost ;
+    //return products.elementPrice() + orders.elementPrice() + package.elementPrice() + accounting.elementPrice() + terminal.elementPrice();
 }
 
 //------------------------------------------------------------------------ Elements
@@ -57,180 +61,195 @@ function generalPrice() {
 const summaryOutputItems = document.querySelectorAll('.list__item');
 
 const products = {
-    input: document.querySelector('#products'),
-    output: summaryOutputItems[0],
-    text: summaryOutputItems[0].children[1],
-    sum: summaryOutputItems[0].lastElementChild,
-    cost: .5,
-    summary: showSummary,
-    calc: textCalc,
-    price: textPrice,
-    getPrice: valuePrice,
-    //suma: generalPrice
+    choiceElement: document.querySelector('#products'),
+    summaryElement: summaryOutputItems[0],
+    calcTextElement: summaryOutputItems[0].children[1],
+    priceTextElement: summaryOutputItems[0].lastElementChild,
+    factor: .5,
+    cost: valuePrice,
+    showSummary: addClassOpen,
+    calcText: textCalc,
+    priceText: textPrice
+    //elementPrice: valuePrice,
 }
 
 const orders = {
-    input: document.querySelector('#orders'),
-    output: summaryOutputItems[1],
-    text: summaryOutputItems[1].children[1],
-    sum: summaryOutputItems[1].lastElementChild,
-    cost: .25,
-    summary: showSummary,
-    calc: textCalc,
-    price: textPrice,
-    getPrice: valuePrice
+    choiceElement: document.querySelector('#orders'),
+    summaryElement: summaryOutputItems[1],
+    calcTextElement: summaryOutputItems[1].children[1],
+    priceTextElement: summaryOutputItems[1].lastElementChild,
+    factor: .25,
+    cost: valuePrice,
+    showSummary: addClassOpen,
+    calcText: textCalc,
+    priceText: textPrice,
+    //elementPrice: valuePrice
 }
 
 const package = {
-    input: document.querySelector('#package'),
+    choiceElement: document.querySelector('#package'),
     inputText: document.querySelector('.select__input'),
-    output: summaryOutputItems[2],
-    text: summaryOutputItems[2].children[1],
-    sum: summaryOutputItems[2].lastElementChild,
+    summaryElement: summaryOutputItems[2],
+    calcTextElement: summaryOutputItems[2].children[1],
+    priceTextElement: summaryOutputItems[2].lastElementChild,
     cost: '',
     optionInput: document.querySelector('.select__dropdown'),
     options: {
         basic: {
-            input: document.querySelector('.select__dropdown').firstElementChild,
+            choiceElement: document.querySelector('.select__dropdown').firstElementChild,
             cost: 0,
             name: 'Basic',
-            calc: packageCalcText,
-            price: packagePriceText,
-            getPrice: packagePrice,
+            calcText: packageCalcText,
+            priceText: packagePriceText,
+            elementPrice: packagePrice,
             selectText: packageSelectText
         },
         professional: {
-            input: document.querySelector('.select__dropdown').children[1],
+            choiceElement: document.querySelector('.select__dropdown').children[1],
             cost: 25,
             name: 'Professional',
-            calc: packageCalcText,
-            price: packagePriceText,
-            getPrice: packagePrice,
+            calcText: packageCalcText,
+            priceText: packagePriceText,
+            elementPrice: packagePrice,
             selectText: packageSelectText
         },
         premium: {
-            input: document.querySelector('.select__dropdown').lastElementChild,
+            choiceElement: document.querySelector('.select__dropdown').lastElementChild,
             cost: 60,
             name: 'Premium',
-            calc: packageCalcText,
-            price: packagePriceText,
-            getPrice: packagePrice,
+            calcText: packageCalcText,
+            priceText: packagePriceText,
+            elementPrice: packagePrice,
             selectText: packageSelectText
         }
     },
-    summary: showSummary,
-    getPrice: price,
-    showOption: () => package.input.classList.toggle('open')
+    showSummary: addClassOpen,
+    elementPrice: addPrice,
+    showOption: () => package.choiceElement.classList.toggle('open')
 }
 
 const accounting = {
-    input: document.querySelector('#accounting'),
-    output: summaryOutputItems[3],
-    text: '',
-    sum: summaryOutputItems[3].lastElementChild,
-    cost: 5,
-    summary: checkShowSummary,
-    price: checkPriceText,
-    getPrice: price
+    choiceElement: document.querySelector('#accounting'),
+    summaryElement: summaryOutputItems[3],
+    calcTextElement: '',
+    priceTextElement: summaryOutputItems[3].lastElementChild,
+    factor: 5,
+    cost: '',
+    showSummary: checkShowSummary,
+    priceText: checkPriceText,
+    elementPrice: addCheckPrice
 }
 
 const terminal = {
-    input: document.querySelector('#terminal'),
-    output: summaryOutputItems[4],
-    text: '',
-    sum: summaryOutputItems[4].lastElementChild,
-    cost: 35,
-    summary: checkShowSummary,
-    price: checkPriceText,
-    getPrice: price
+    choiceElement: document.querySelector('#terminal'),
+    summaryElement: summaryOutputItems[4],
+    calcTextElement: '',
+    priceTextElement: summaryOutputItems[4].lastElementChild,
+    factor: 35,
+    cost: '',
+    showSummary: checkShowSummary,
+    priceText: checkPriceText,
+    elementPrice: addCheckPrice
 }
 
 const totalPrice = {
-    input: '',
-    output: document.querySelector('#total-price'),
-    text: '',
-    sum: document.querySelector('#total-price').lastElementChild,
+    choiceElement: '',
+    summaryElement: document.querySelector('#total-price'),
+    calcTextElement: '',
+    priceTextElement: document.querySelector('#total-price').lastElementChild,
     cost: '',
-    summary: showSummary,
-    getPrice: generalPrice
+    showSummary: addClassOpen,
+    elementPrice: generalPrice
 }
 
 //-------------------------------------------------------------------------------------- Events
 
-products.input.addEventListener('input', e => {
-        products.summary();
-        products.calc();
-        products.price();
-        products.getPrice();
-        totalPrice.summary();
-        //products.suma();
+products.choiceElement.addEventListener('input', e => {
+
+        products.showSummary();
+        products.calcText();
+        products.priceText();
+        products.cost();
+        totalPrice.showSummary();
+    totalPrice.elementPrice();
     }
 )
 
-orders.input.addEventListener('input', e => {
-        orders.summary();
-        orders.calc();
-        orders.price();
-        orders.getPrice();
-        totalPrice.summary();
+orders.choiceElement.addEventListener('input', e => {
+        orders.showSummary();
+        orders.calcText();
+        orders.priceText();
+        orders.cost();
+        totalPrice.showSummary();
+    totalPrice.elementPrice();
     }
 )
 
-package.input.addEventListener('click', e => {
+package.choiceElement.addEventListener('click', e => {
 
         switch (e.target) {
-            case package.options.basic.input:
-                package.summary();
-                package.options.basic.calc();
-                package.options.basic.price();
-                package.options.basic.getPrice();
+            case package.options.basic.choiceElement:
+                package.showSummary();
+                package.options.basic.calcText();
+                package.options.basic.priceText();
+                package.options.basic.elementPrice();
                 package.options.basic.selectText();
-                totalPrice.summary();
+                totalPrice.showSummary();
+                totalPrice.elementPrice();
                 break;
 
-            case package.options.professional.input:
-                package.summary();
-                package.options.professional.calc();
-                package.options.professional.price();
-                package.options.professional.getPrice();
+            case package.options.professional.choiceElement:
+                package.showSummary();
+                package.options.professional.calcText();
+                package.options.professional.priceText();
+                package.options.professional.elementPrice();
                 package.options.professional.selectText();
-                totalPrice.summary();
+                totalPrice.showSummary();
+                totalPrice.elementPrice();
                 break;
 
-            case package.options.premium.input:
-                package.summary();
-                package.options.premium.calc();
-                package.options.premium.price();
-                package.options.premium.getPrice();
+            case package.options.premium.choiceElement:
+                package.showSummary();
+                package.options.premium.calcText();
+                package.options.premium.priceText();
+                package.options.premium.elementPrice();
                 package.options.premium.selectText();
-                totalPrice.summary();
+                totalPrice.showSummary();
+                totalPrice.elementPrice();
                 break;
         }
         package.showOption();
     }
 )
 
-accounting.input.addEventListener('click', e => {
-    accounting.summary();
-    accounting.price();
-    accounting.getPrice();
-    totalPrice.summary();
+accounting.choiceElement.addEventListener('change', e => {
+    accounting.showSummary();
+    accounting.priceText();
+    accounting.elementPrice();
+    totalPrice.showSummary();
+    totalPrice.elementPrice();
 })
 
-terminal.input.addEventListener('click', e => {
-    terminal.summary();
-    terminal.price();
-    terminal.getPrice();
-    totalPrice.summary();
+terminal.choiceElement.addEventListener('change', e => {
+    terminal.showSummary();
+    terminal.priceText();
+    terminal.elementPrice();
+    totalPrice.showSummary();
+    totalPrice.elementPrice();
 })
 
-totalPrice.getPrice();
+
+
+console.log('productsCost::::', products.cost());
+console.log('ordersCost::::', orders.cost());
+console.log('packageCost:::', package.cost);
+console.log('accountingCost:::', accounting.cost);
+console.log('terminalCost:::', terminal.cost);
+console.log('totalPrice:::', totalPrice.cost);
 
 
 
-
-
-// formInput.forEach(input => input.addEventListener('input', e => {
+// formchoiceElement.forEach(input => input.addEventListener('input', e => {
 //
 // // validation inputs
 //
