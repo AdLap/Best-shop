@@ -23,7 +23,7 @@ function addPrice() {
 }
 
 function addCheckPrice() {
-    if (this.choiceElement.checked) return this.cost = this.factor;
+    this.choiceElement.checked ? this.cost = this.factor : this.cost = 0;
 }
 
 function packagePrice() {
@@ -52,8 +52,7 @@ function checkShowSummary() {
 
 function generalPrice() {
     totalPrice.cost = products.cost() + orders.cost() + package.cost + accounting.cost + terminal.cost;
-    totalPrice.priceTextElement.innerText = totalPrice.cost ;
-    //return products.elementPrice() + orders.elementPrice() + package.elementPrice() + accounting.elementPrice() + terminal.elementPrice();
+    totalPrice.priceTextElement.innerText = totalPrice.cost;
 }
 
 //------------------------------------------------------------------------ Elements
@@ -92,7 +91,7 @@ const package = {
     summaryElement: summaryOutputItems[2],
     calcTextElement: summaryOutputItems[2].children[1],
     priceTextElement: summaryOutputItems[2].lastElementChild,
-    cost: '',
+    cost: 0,
     optionInput: document.querySelector('.select__dropdown'),
     options: {
         basic: {
@@ -134,7 +133,7 @@ const accounting = {
     calcTextElement: '',
     priceTextElement: summaryOutputItems[3].lastElementChild,
     factor: 5,
-    cost: '',
+    cost: 0,
     showSummary: checkShowSummary,
     priceText: checkPriceText,
     elementPrice: addCheckPrice
@@ -146,7 +145,7 @@ const terminal = {
     calcTextElement: '',
     priceTextElement: summaryOutputItems[4].lastElementChild,
     factor: 35,
-    cost: '',
+    cost: 0,
     showSummary: checkShowSummary,
     priceText: checkPriceText,
     elementPrice: addCheckPrice
@@ -157,7 +156,7 @@ const totalPrice = {
     summaryElement: document.querySelector('#total-price'),
     calcTextElement: '',
     priceTextElement: document.querySelector('#total-price').lastElementChild,
-    cost: '',
+    cost: 0,
     showSummary: addClassOpen,
     elementPrice: generalPrice
 }
@@ -171,7 +170,9 @@ products.choiceElement.addEventListener('input', e => {
         products.priceText();
         products.cost();
         totalPrice.showSummary();
-    totalPrice.elementPrice();
+        totalPrice.elementPrice();
+    console.log('productsCost::::', products.cost());
+    console.log('totalPrice:::', totalPrice.cost);
     }
 )
 
@@ -181,7 +182,9 @@ orders.choiceElement.addEventListener('input', e => {
         orders.priceText();
         orders.cost();
         totalPrice.showSummary();
-    totalPrice.elementPrice();
+        totalPrice.elementPrice();
+    console.log('ordersCost::::', orders.cost());
+    console.log('totalPrice:::', totalPrice.cost);
     }
 )
 
@@ -219,33 +222,37 @@ package.choiceElement.addEventListener('click', e => {
                 break;
         }
         package.showOption();
+    console.log('packageCost:::', package.cost);
+    console.log('totalPrice:::', totalPrice.cost);
     }
 )
 
 accounting.choiceElement.addEventListener('change', e => {
     accounting.showSummary();
-    accounting.priceText();
     accounting.elementPrice();
+    accounting.priceText();
     totalPrice.showSummary();
     totalPrice.elementPrice();
+    console.log('accountingCost:::', accounting.cost);
+    console.log('totalPrice:::', totalPrice.cost);
 })
 
 terminal.choiceElement.addEventListener('change', e => {
     terminal.showSummary();
-    terminal.priceText();
     terminal.elementPrice();
+    terminal.priceText();
     totalPrice.showSummary();
     totalPrice.elementPrice();
+    console.log('terminalCost:::', terminal.cost);
+    console.log('totalPrice:::', totalPrice.cost);
 })
 
 
 
-console.log('productsCost::::', products.cost());
-console.log('ordersCost::::', orders.cost());
-console.log('packageCost:::', package.cost);
-console.log('accountingCost:::', accounting.cost);
-console.log('terminalCost:::', terminal.cost);
-console.log('totalPrice:::', totalPrice.cost);
+
+
+
+
 
 
 
