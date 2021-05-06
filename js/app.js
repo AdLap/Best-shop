@@ -6,24 +6,26 @@ function addClassOpen() {
     this.summaryElement.classList.add('open');
 }
 
-function textCalc() {
-    this.calcTextElement.innerText = `$${this.choiceElement.value} * ${this.factor}`;
-}
-
-function textPrice() {
-    this.priceTextElement.innerText = `$${this.choiceElement.value * this.factor}`
-}
+//-------- number inputs
 
 function valuePrice() {
-    return this.choiceElement.value * this.factor;
+
+    if ((!Number.isInteger(Number(this.choiceElement.value))) || (Number(this.choiceElement.value < 0))) {
+        this.calcTextElement.innerText = 'Enter a positive integer';
+        this.summaryElement.style.backgroundColor = 'tomato';
+        return;
+    }
+
+    this.summaryElement.style.backgroundColor = '#55DFB4FF';
+    this.calcTextElement.innerText = `$${this.choiceElement.value} * ${this.factor}`;
+    this.priceTextElement.innerText = `$${this.choiceElement.value * this.factor}`;
+    return Number(this.choiceElement.value) * this.factor;
 }
+
+//----------- package
 
 function addPrice() {
     if (this.summaryElement.classList.contains('open')) return this.cost;
-}
-
-function addCheckPrice() {
-    this.choiceElement.checked ? this.cost = this.factor : this.cost = 0;
 }
 
 function packagePrice() {
@@ -42,6 +44,12 @@ function packageSelectText() {
     package.inputText.innerText = `${this.name}`;
 }
 
+//------------ checkbox
+
+function addCheckPrice() {
+    this.choiceElement.checked ? this.cost = this.factor : this.cost = 0;
+}
+
 function checkPriceText() {
     this.priceTextElement.innerText = `$${this.cost}`;
 }
@@ -49,6 +57,8 @@ function checkPriceText() {
 function checkShowSummary() {
     this.summaryElement.classList.toggle('open');
 }
+
+//----------- totalPrice
 
 function generalPrice() {
     totalPrice.cost = products.cost() + orders.cost() + package.cost + accounting.cost + terminal.cost;
@@ -66,10 +76,7 @@ const products = {
     priceTextElement: summaryOutputItems[0].lastElementChild,
     factor: .5,
     cost: valuePrice,
-    showSummary: addClassOpen,
-    calcText: textCalc,
-    priceText: textPrice
-    //elementPrice: valuePrice,
+    showSummary: addClassOpen
 }
 
 const orders = {
@@ -79,10 +86,7 @@ const orders = {
     priceTextElement: summaryOutputItems[1].lastElementChild,
     factor: .25,
     cost: valuePrice,
-    showSummary: addClassOpen,
-    calcText: textCalc,
-    priceText: textPrice,
-    //elementPrice: valuePrice
+    showSummary: addClassOpen
 }
 
 const package = {
@@ -164,27 +168,16 @@ const totalPrice = {
 //-------------------------------------------------------------------------------------- Events
 
 products.choiceElement.addEventListener('input', e => {
-
         products.showSummary();
-        products.calcText();
-        products.priceText();
-        products.cost();
         totalPrice.showSummary();
         totalPrice.elementPrice();
-    console.log('productsCost::::', products.cost());
-    console.log('totalPrice:::', totalPrice.cost);
     }
 )
 
 orders.choiceElement.addEventListener('input', e => {
         orders.showSummary();
-        orders.calcText();
-        orders.priceText();
-        orders.cost();
         totalPrice.showSummary();
         totalPrice.elementPrice();
-    console.log('ordersCost::::', orders.cost());
-    console.log('totalPrice:::', totalPrice.cost);
     }
 )
 
@@ -222,8 +215,6 @@ package.choiceElement.addEventListener('click', e => {
                 break;
         }
         package.showOption();
-    console.log('packageCost:::', package.cost);
-    console.log('totalPrice:::', totalPrice.cost);
     }
 )
 
@@ -233,8 +224,6 @@ accounting.choiceElement.addEventListener('change', e => {
     accounting.priceText();
     totalPrice.showSummary();
     totalPrice.elementPrice();
-    console.log('accountingCost:::', accounting.cost);
-    console.log('totalPrice:::', totalPrice.cost);
 })
 
 terminal.choiceElement.addEventListener('change', e => {
@@ -243,44 +232,4 @@ terminal.choiceElement.addEventListener('change', e => {
     terminal.priceText();
     totalPrice.showSummary();
     totalPrice.elementPrice();
-    console.log('terminalCost:::', terminal.cost);
-    console.log('totalPrice:::', totalPrice.cost);
 })
-
-
-
-
-
-
-
-
-
-
-// formchoiceElement.forEach(input => input.addEventListener('input', e => {
-//
-// // validation inputs
-//
-//         summaryListItem.forEach(el => el.style.backgroundColor = '#55DFB4FF');
-//
-//         if (!Number.isInteger(Number(e.target.value)) || Number(e.target.value <= 0)) {
-//
-//             if (e.target === products) {
-//                 errorText(productsSummaryCalc);
-//                 changeBackgroundColor(productsList, 'tomato');
-//             }
-//
-//             if (e.target === orders) {
-//                 errorText(ordersSummaryCalc);
-//                 changeBackgroundColor(ordersList, 'tomato');
-//             }
-//             return;
-//         }
-//
-//         if (products.value.length === 0) {
-//             removeOpen(productsList);
-//         }
-//
-//         if (orders.value.length === 0) {
-//             removeOpen(ordersList);
-//         }
-//}
