@@ -17,8 +17,8 @@ function valuePrice() {
     }
 
     this.summaryElement.style.backgroundColor = '#55DFB4FF';
-    this.calcTextElement.innerText = `$${this.choiceElement.value} * ${this.factor}`;
-    this.priceTextElement.innerText = `$${this.choiceElement.value * this.factor}`;
+    this.calcTextElement.innerText = `${this.choiceElement.value} * $ ${this.factor}`;
+    this.priceTextElement.innerText = `$ ${this.choiceElement.value * this.factor}`;
     return Number(this.choiceElement.value) * this.factor;
 }
 
@@ -29,29 +29,17 @@ function addPrice() {
 }
 
 function packagePrice() {
-    return package.cost = this.cost;
-}
-
-function packageCalcText() {
     package.calcTextElement.innerText = `${this.name}`;
-}
-
-function packagePriceText() {
-    package.priceTextElement.innerText = `$${this.cost}`;
-}
-
-function packageSelectText() {
+    package.priceTextElement.innerText = `$ ${this.cost}`;
     package.inputText.innerText = `${this.name}`;
+    return package.cost = this.cost;
 }
 
 //------------ checkbox
 
 function addCheckPrice() {
     this.choiceElement.checked ? this.cost = this.factor : this.cost = 0;
-}
-
-function checkPriceText() {
-    this.priceTextElement.innerText = `$${this.cost}`;
+    this.priceTextElement.innerText = `$ ${this.cost}`;
 }
 
 function checkShowSummary() {
@@ -62,7 +50,7 @@ function checkShowSummary() {
 
 function generalPrice() {
     totalPrice.cost = products.cost() + orders.cost() + package.cost + accounting.cost + terminal.cost;
-    totalPrice.priceTextElement.innerText = totalPrice.cost;
+    totalPrice.priceTextElement.innerText = `$ ${totalPrice.cost}`;
 }
 
 //------------------------------------------------------------------------ Elements
@@ -102,28 +90,19 @@ const package = {
             choiceElement: document.querySelector('.select__dropdown').firstElementChild,
             cost: 0,
             name: 'Basic',
-            calcText: packageCalcText,
-            priceText: packagePriceText,
-            elementPrice: packagePrice,
-            selectText: packageSelectText
+            elementPrice: packagePrice
         },
         professional: {
             choiceElement: document.querySelector('.select__dropdown').children[1],
             cost: 25,
             name: 'Professional',
-            calcText: packageCalcText,
-            priceText: packagePriceText,
-            elementPrice: packagePrice,
-            selectText: packageSelectText
+            elementPrice: packagePrice
         },
         premium: {
             choiceElement: document.querySelector('.select__dropdown').lastElementChild,
             cost: 60,
             name: 'Premium',
-            calcText: packageCalcText,
-            priceText: packagePriceText,
-            elementPrice: packagePrice,
-            selectText: packageSelectText
+            elementPrice: packagePrice
         }
     },
     showSummary: addClassOpen,
@@ -139,7 +118,6 @@ const accounting = {
     factor: 5,
     cost: 0,
     showSummary: checkShowSummary,
-    priceText: checkPriceText,
     elementPrice: addCheckPrice
 }
 
@@ -151,7 +129,6 @@ const terminal = {
     factor: 35,
     cost: 0,
     showSummary: checkShowSummary,
-    priceText: checkPriceText,
     elementPrice: addCheckPrice
 }
 
@@ -186,30 +163,21 @@ package.choiceElement.addEventListener('click', e => {
         switch (e.target) {
             case package.options.basic.choiceElement:
                 package.showSummary();
-                package.options.basic.calcText();
-                package.options.basic.priceText();
                 package.options.basic.elementPrice();
-                package.options.basic.selectText();
                 totalPrice.showSummary();
                 totalPrice.elementPrice();
                 break;
 
             case package.options.professional.choiceElement:
                 package.showSummary();
-                package.options.professional.calcText();
-                package.options.professional.priceText();
                 package.options.professional.elementPrice();
-                package.options.professional.selectText();
                 totalPrice.showSummary();
                 totalPrice.elementPrice();
                 break;
 
             case package.options.premium.choiceElement:
                 package.showSummary();
-                package.options.premium.calcText();
-                package.options.premium.priceText();
                 package.options.premium.elementPrice();
-                package.options.premium.selectText();
                 totalPrice.showSummary();
                 totalPrice.elementPrice();
                 break;
@@ -221,7 +189,6 @@ package.choiceElement.addEventListener('click', e => {
 accounting.choiceElement.addEventListener('change', e => {
     accounting.showSummary();
     accounting.elementPrice();
-    accounting.priceText();
     totalPrice.showSummary();
     totalPrice.elementPrice();
 })
@@ -229,7 +196,6 @@ accounting.choiceElement.addEventListener('change', e => {
 terminal.choiceElement.addEventListener('change', e => {
     terminal.showSummary();
     terminal.elementPrice();
-    terminal.priceText();
     totalPrice.showSummary();
     totalPrice.elementPrice();
 })
