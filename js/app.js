@@ -8,12 +8,16 @@ function addClassOpen() {
 
 //-------- number inputs
 
+function numberInputAddClassOpen() {
+    this.choiceElement.value.length > 0 ? this.summaryElement.classList.add('open') : this.summaryElement.classList.remove('open');
+}
+
 function valuePrice() {
 
     if ((!Number.isInteger(Number(this.choiceElement.value))) || (Number(this.choiceElement.value < 0))) {
         this.calcTextElement.innerText = 'Enter a positive integer';
         this.summaryElement.style.backgroundColor = 'tomato';
-        return;
+        return 0;
     }
 
     this.summaryElement.style.backgroundColor = '#55DFB4FF';
@@ -64,7 +68,7 @@ const products = {
     priceTextElement: summaryOutputItems[0].lastElementChild,
     factor: .5,
     cost: valuePrice,
-    showSummary: addClassOpen
+    showSummary: numberInputAddClassOpen
 }
 
 const orders = {
@@ -74,7 +78,7 @@ const orders = {
     priceTextElement: summaryOutputItems[1].lastElementChild,
     factor: .25,
     cost: valuePrice,
-    showSummary: addClassOpen
+    showSummary: numberInputAddClassOpen
 }
 
 const package = {
